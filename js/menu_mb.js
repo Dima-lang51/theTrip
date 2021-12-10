@@ -61,11 +61,11 @@ if (menuLinks.length > 0) {
     const link = menuLinks[index];
     link.addEventListener('click', function(e) {
       const blockId = link.getAttribute('href').replace('#', '');
-      //window.location.hash = blockId;
-      document.getElementById(blockId).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
+      window.location.hash = blockId;
+      //document.getElementById(blockId).scrollIntoView({
+      //behavior: 'smooth',
+      //block: 'start'
+    //})
       const popupActive = document.querySelector('.popup.open');
       if (popupActive){
         popupClose(popupActive, true);
