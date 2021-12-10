@@ -87,13 +87,14 @@ if (menuLinks.length > 0) {
       //document.getElementById(blockId).scrollIntoView({
       //block: 'start'
     //})
-      scrollElementIntoView(document.getElementById(blockId))
+      //scrollElementIntoView(document.getElementById(blockId))
+
       const popupActive = document.querySelector('.popup.open');
       if (popupActive){
         popupClose(popupActive, true);
       }
-      
-      e.preventDefault();
+      document.getElementById(blockId).scrollIntoViewIfNeeded();
+      //e.preventDefault();
     });
   }
 }
