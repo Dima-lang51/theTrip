@@ -56,6 +56,25 @@ function popupClose(popupActive, doUnlock = true) {
   }
 }
 
+function go_hash(hash) {
+  console.log('go_hash: ' + hash)
+  if(hash.indexOf('#') == -1)
+    hash = '#' + hash
+  if(document.location.hash) {
+    document.location.hash = hash
+    return
+  }
+  if(window.location.hash) {
+    window.location.hash = hash
+    return
+  }
+  if(document.location.href) {
+    document.location.href = hash
+    return
+  }
+  window.location.href = hash
+}
+
 
 if (menuLinks.length > 0) {
   for (let index = 0; index < menuLinks.length; index++) {
@@ -65,16 +84,16 @@ if (menuLinks.length > 0) {
       const blockId = link.getAttribute('href').replace('#', '');
       
       //window.location.hash = blockId;
-
+      //document.getElementById(blockId).scrollIntoView({
+      //  block: 'start'
+      //})
+      go_hash(blockId);
       const popupActive = document.querySelector('.popup.open');
+      
+      document.location.reload(true)
       if (popupActive){
         popupClose(popupActive, true);
       }
-      document.getElementById(blockId).scrollIntoView({
-        block: 'start'
-      })
-      document.location.reload(true)
-      
     });
   }
 }
