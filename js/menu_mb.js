@@ -90,7 +90,6 @@ if (menuLinks.length > 0) {
       go_hash(blockId);
       const popupActive = document.querySelector('.popup.open');
       
-      document.location.reload(true)
       if (popupActive){
         popupClose(popupActive, true);
       }
