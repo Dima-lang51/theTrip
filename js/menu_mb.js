@@ -61,16 +61,17 @@ if (menuLinks.length > 0) {
     const link = menuLinks[index];
     link.addEventListener('click', function(e) {
       const blockId = link.getAttribute('href').replace('#', '');
-      window.location.hash = "";
-      window.location.hash = blockId;
+      
       //window.location.hash = blockId;
-     // document.getElementById(blockId).scrollIntoView({
-      //block: 'start'
-    //})
+    
+      
       const popupActive = document.querySelector('.popup.open');
       if (popupActive){
         popupClose(popupActive, true);
       }
+      document.getElementById(blockId).scrollIntoView({
+        block: 'start'
+      })
       e.preventDefault();
     });
   }
