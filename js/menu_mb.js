@@ -57,44 +57,24 @@ function popupClose(popupActive, doUnlock = true) {
 }
 
 
-/** Scrolls the element into view
- * Manually created since Safari does not support the native one inside an iframe
-*/
- const scrollElementIntoView = (element , behavior) => {
-
-  let scrollTop = window.pageYOffset || element.scrollTop
-
-   
-  const finalOffset = element.getBoundingClientRect().top + scrollTop;
-
-  window.parent.scrollTo({
-    top: finalOffset,
-    behavior: behavior || 'auto'
-  })
-}
-
-
-
-
 if (menuLinks.length > 0) {
   for (let index = 0; index < menuLinks.length; index++) {
     const link = menuLinks[index];
     link.addEventListener('click', function(e) {
+      e.preventDefault();
       const blockId = link.getAttribute('href').replace('#', '');
       
       //window.location.hash = blockId;
-    
-      //document.getElementById(blockId).scrollIntoView({
-      //block: 'start'
-    //})
-      //scrollElementIntoView(document.getElementById(blockId))
 
       const popupActive = document.querySelector('.popup.open');
       if (popupActive){
         popupClose(popupActive, true);
       }
-      document.getElementById(blockId).scrollIntoViewIfNeeded();
-      //e.preventDefault();
+      document.getElementById(blockId).scrollIntoView({
+        block: 'start'
+      })
+      document.location.reload(true)
+      
     });
   }
 }
