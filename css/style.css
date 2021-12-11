@@ -120,6 +120,11 @@ body {
   padding: 6px 9px;
 }
 
+.heder__button:hover {
+  background: #29716a;
+  color:#FFFFFF;
+}
+
 .menu__list {
   margin-top: 40px;
   margin-left: 5.46vw;
